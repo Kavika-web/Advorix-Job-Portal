@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Applied Jobs – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-md min-h-screen fixed top-0 left-0 z-40 flex flex-col">
+      <div class="px-6 py-5 border-b">
+        <h1 class="text-xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+      </div>
+      <div class="px-6 py-5 border-b flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">J</div>
+        <div>
+          <p class="font-semibold text-sm text-gray-800">John Doe</p>
+          <p class="text-xs text-gray-400">Candidate</p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        <a href="user-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏠 <span>Dashboard</span></a>
+        <a href="jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">💼 <span>Browse Jobs</span></a>
+        <a href="applied-jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-medium text-sm">📋 <span>Applied Jobs</span></a>
+        <a href="user-profile.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">👤 <span>My Profile</span></a>
+        <a href="upload-resume.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📄 <span>My Resume</span></a>
+      </nav>
+      <div class="px-4 py-4 border-t">
+        <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 font-medium text-sm">🚪 <span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 flex-1 p-8">
+
+      <!-- Header -->
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Applied Jobs 📋</h2>
+        <p class="text-gray-500 text-sm mt-1">Track the status of all your job applications.</p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-gray-800">12</p>
+          <p class="text-xs text-gray-400 mt-1">Total Applied</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-yellow-500">5</p>
+          <p class="text-xs text-gray-400 mt-1">Under Review</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-green-500">2</p>
+          <p class="text-xs text-gray-400 mt-1">Shortlisted</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-red-500">1</p>
+          <p class="text-xs text-gray-400 mt-1">Rejected</p>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex gap-2 mb-6">
+        <button onclick="filterJobs('all', this)"
+          class="px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 text-white transition">
+          All (12)
+        </button>
+        <button onclick="filterJobs('review', this)"
+          class="px-4 py-2 text-sm font-medium rounded-lg bg-white text-gray-600 hover:bg-gray-50 transition">
+          Under Review (5)
+        </button>
+        <button onclick="filterJobs('shortlisted', this)"
+          class="px-4 py-2 text-sm font-medium rounded-lg bg-white text-gray-600 hover:bg-gray-50 transition">
+          Shortlisted (2)
+        </button>
+        <button onclick="filterJobs('rejected', this)"
+          class="px-4 py-2 text-sm font-medium rounded-lg bg-white text-gray-600 hover:bg-gray-50 transition">
+          Rejected (1)
+        </button>
+      </div>
+
+      <!-- Applications Table -->
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 border-b">
+            <tr>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Job</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Company</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Applied On</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Status</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center text-lg">💻</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Frontend Developer</p>
+                    <p class="text-xs text-gray-400">Remote • Full Time</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Google</td>
+              <td class="px-6 py-4 text-gray-400">Apr 1, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Under Review</span>
+              </td>
+              <td class="px-6 py-4">
+                <button class="text-blue-600 text-xs hover:underline">View</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center text-lg">🎨</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">UI/UX Designer</p>
+                    <p class="text-xs text-gray-400">New York • Full Time</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Microsoft</td>
+              <td class="px-6 py-4 text-gray-400">Mar 28, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Shortlisted</span>
+              </td>
+              <td class="px-6 py-4">
+                <button class="text-blue-600 text-xs hover:underline">View</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-yellow-100 rounded-lg flex items-center justify-center text-lg">📊</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Data Analyst</p>
+                    <p class="text-xs text-gray-400">Seattle • Full Time</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Amazon</td>
+              <td class="px-6 py-4 text-gray-400">Mar 25, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">Applied</span>
+              </td>
+              <td class="px-6 py-4">
+                <button class="text-blue-600 text-xs hover:underline">View</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center text-lg">🔧</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Backend Engineer</p>
+                    <p class="text-xs text-gray-400">Remote • Contract</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Meta</td>
+              <td class="px-6 py-4 text-gray-400">Mar 20, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-medium">Rejected</span>
+              </td>
+              <td class="px-6 py-4">
+                <button class="text-blue-600 text-xs hover:underline">View</button>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center text-lg">☁️</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">DevOps Engineer</p>
+                    <p class="text-xs text-gray-400">Remote • Full Time</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Netflix</td>
+              <td class="px-6 py-4 text-gray-400">Mar 18, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Shortlisted</span>
+              </td>
+              <td class="px-6 py-4">
+                <button class="text-blue-600 text-xs hover:underline">View</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+    <script>
+      function filterJobs(type, btn) {
+        // Update active button style
+        document.querySelectorAll('button[onclick^="filterJobs"]').forEach(b => {
+          b.classList.remove('bg-blue-600', 'text-white');
+          b.classList.add('bg-white', 'text-gray-600');
+        });
+        btn.classList.add('bg-blue-600', 'text-white');
+        btn.classList.remove('bg-white', 'text-gray-600');
+      }
+    </script>
+
+  </body>
+</html>

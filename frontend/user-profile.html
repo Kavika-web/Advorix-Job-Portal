@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Profile – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-md min-h-screen fixed top-0 left-0 z-40 flex flex-col">
+      <div class="px-6 py-5 border-b">
+        <h1 class="text-xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+      </div>
+      <div class="px-6 py-5 border-b flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">J</div>
+        <div>
+          <p class="font-semibold text-sm text-gray-800">John Doe</p>
+          <p class="text-xs text-gray-400">Candidate</p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        <a href="user-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏠 <span>Dashboard</span></a>
+        <a href="jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">💼 <span>Browse Jobs</span></a>
+        <a href="applied-jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📋 <span>Applied Jobs</span></a>
+        <a href="user-profile.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-medium text-sm">👤 <span>My Profile</span></a>
+        <a href="upload-resume.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📄 <span>My Resume</span></a>
+      </nav>
+      <div class="px-4 py-4 border-t">
+        <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 font-medium text-sm">🚪 <span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 flex-1 p-8">
+
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">My Profile 👤</h2>
+        <p class="text-gray-500 text-sm mt-1">Keep your profile updated to get better job matches.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- LEFT: Avatar & Summary -->
+        <div class="space-y-6">
+
+          <!-- Avatar Card -->
+          <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+            <div class="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-4xl mx-auto mb-4">J</div>
+            <h3 class="font-bold text-gray-800 text-lg">John Doe</h3>
+            <p class="text-gray-400 text-sm">Frontend Developer</p>
+            <p class="text-gray-400 text-xs mt-1">📍 New York, USA</p>
+            <button class="mt-4 w-full border border-blue-600 text-blue-600 py-2 rounded-lg text-sm font-medium hover:bg-blue-50 transition">
+              Change Photo
+            </button>
+          </div>
+
+          <!-- Profile Completion -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-4">Profile Strength</h3>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-gray-500">70% Complete</span>
+              <span class="text-sm text-blue-600 font-medium">70%</span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-full h-2.5 mb-4">
+              <div class="bg-blue-600 h-2.5 rounded-full" style="width: 70%"></div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center gap-2 text-green-600">✅ Basic Info</div>
+              <div class="flex items-center gap-2 text-green-600">✅ Email Verified</div>
+              <div class="flex items-center gap-2 text-yellow-500">⚠️ Upload Resume</div>
+              <div class="flex items-center gap-2 text-yellow-500">⚠️ Add Skills</div>
+              <div class="flex items-center gap-2 text-gray-400">⬜ Add Experience</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Edit Form -->
+        <div class="md:col-span-2 space-y-6">
+
+          <!-- Basic Info -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-5">Basic Information</h3>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-sm font-medium text-gray-700 block mb-1">First Name</label>
+                  <input type="text" value="John"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-gray-700 block mb-1">Last Name</label>
+                  <input type="text" value="Doe"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm font-medium text-gray-700 block mb-1">Email Address</label>
+                <input type="email" value="john.doe@email.com"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="text-sm font-medium text-gray-700 block mb-1">Phone Number</label>
+                  <input type="tel" value="+1 234 567 8900"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+                </div>
+                <div>
+                  <label class="text-sm font-medium text-gray-700 block mb-1">Location</label>
+                  <input type="text" value="New York, USA"
+                    class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+                </div>
+              </div>
+              <div>
+                <label class="text-sm font-medium text-gray-700 block mb-1">Job Title</label>
+                <input type="text" value="Frontend Developer"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+              </div>
+              <div>
+                <label class="text-sm font-medium text-gray-700 block mb-1">Bio</label>
+                <textarea rows="3"
+                  class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 resize-none"
+                  >Passionate frontend developer with 3 years of experience building modern web applications.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-5">Skills</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                React <button class="ml-1 text-blue-400 hover:text-blue-700" onclick="this.parentElement.remove()">×</button>
+              </span>
+              <span class="flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                JavaScript <button class="ml-1 text-blue-400 hover:text-blue-700" onclick="this.parentElement.remove()">×</button>
+              </span>
+              <span class="flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                Tailwind CSS <button class="ml-1 text-blue-400 hover:text-blue-700" onclick="this.parentElement.remove()">×</button>
+              </span>
+              <span class="flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                Node.js <button class="ml-1 text-blue-400 hover:text-blue-700" onclick="this.parentElement.remove()">×</button>
+              </span>
+            </div>
+            <div class="flex gap-2">
+              <input type="text" id="skillInput" placeholder="Add a skill..."
+                class="flex-1 border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+              <button onclick="addSkill()"
+                class="bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-5">Experience</h3>
+            <div class="space-y-4">
+              <div class="border rounded-xl p-4">
+                <div class="grid grid-cols-2 gap-4 mb-3">
+                  <div>
+                    <label class="text-sm font-medium text-gray-700 block mb-1">Job Title</label>
+                    <input type="text" value="Frontend Developer"
+                      class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-gray-700 block mb-1">Company</label>
+                    <input type="text" value="TechCorp Inc"
+                      class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-sm font-medium text-gray-700 block mb-1">Start Date</label>
+                    <input type="month" value="2022-01"
+                      class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+                  </div>
+                  <div>
+                    <label class="text-sm font-medium text-gray-700 block mb-1">End Date</label>
+                    <input type="month" value="2024-01"
+                      class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="mt-4 text-blue-600 text-sm font-medium hover:underline">+ Add Another Experience</button>
+          </div>
+
+          <!-- Save Button -->
+          <button onclick="saveProfile()"
+            class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">
+            Save Profile
+          </button>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function addSkill() {
+        const input = document.getElementById('skillInput');
+        const skill = input.value.trim();
+        if (!skill) return;
+        const container = input.parentElement.previousElementSibling;
+        const tag = document.createElement('span');
+        tag.className = 'flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium';
+        tag.innerHTML = `${skill} <button class="ml-1 text-blue-400 hover:text-blue-700" onclick="this.parentElement.remove()">×</button>`;
+        container.appendChild(tag);
+        input.value = '';
+      }
+
+      function saveProfile() {
+        alert('✅ Profile saved successfully!');
+      }
+    </script>
+
+  </body>
+</html>

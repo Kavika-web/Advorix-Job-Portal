@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center px-4">
+
+    <div class="w-full max-w-md">
+
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <a href="index.html">
+          <h1 class="text-3xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+        </a>
+        <p class="text-gray-500 mt-2 text-sm">Welcome back! Please login to continue.</p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-md p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Login</h2>
+
+        <!-- Role Tabs -->
+        <div class="flex bg-gray-100 rounded-lg p-1 mb-6">
+          <button onclick="setRole('candidate')" id="tab-candidate"
+            class="flex-1 py-2 text-sm font-medium rounded-md bg-white shadow text-blue-600 transition">
+            👤 Candidate
+          </button>
+          <button onclick="setRole('company')" id="tab-company"
+            class="flex-1 py-2 text-sm font-medium rounded-md text-gray-500 transition">
+            🏢 Company
+          </button>
+          <button onclick="setRole('admin')" id="tab-admin"
+            class="flex-1 py-2 text-sm font-medium rounded-md text-gray-500 transition">
+            🛡️ Admin
+          </button>
+        </div>
+
+        <!-- Form -->
+        <div class="space-y-4">
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Email Address</label>
+            <input type="email" placeholder="you@example.com"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"/>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Password</label>
+            <input type="password" placeholder="••••••••"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"/>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <label class="flex items-center gap-2 text-gray-500">
+              <input type="checkbox" class="rounded"/> Remember me
+            </label>
+            <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+          </div>
+          <button onclick="handleLogin()"
+            class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm">
+            Login
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-6">
+          <div class="flex-1 h-px bg-gray-200"></div>
+          <span class="text-xs text-gray-400">OR</span>
+          <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+
+        <!-- Register Link -->
+        <p class="text-center text-sm text-gray-500">
+          Don't have an account?
+          <a href="register.html" class="text-blue-600 font-medium hover:underline">Register as Candidate</a>
+          or
+          <a href="register-company.html" class="text-blue-600 font-medium hover:underline">Register as Company</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+      let currentRole = 'candidate';
+
+      function setRole(role) {
+        currentRole = role;
+        const tabs = ['candidate', 'company', 'admin'];
+        tabs.forEach(t => {
+          const tab = document.getElementById('tab-' + t);
+          if (t === role) {
+            tab.classList.add('bg-white', 'shadow', 'text-blue-600');
+            tab.classList.remove('text-gray-500');
+          } else {
+            tab.classList.remove('bg-white', 'shadow', 'text-blue-600');
+            tab.classList.add('text-gray-500');
+          }
+        });
+      }
+
+      async function handleLogin() {
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        if (!email || !password) {
+          alert('⚠️ Please enter email and password');
+          return;
+        }
+
+        const btn = document.querySelector('button[onclick="handleLogin()"]');
+        btn.textContent = 'Logging in...';
+        btn.disabled = true;
+
+        const result = await loginUser({
+          email,
+          password,
+          role: currentRole
+        });
+
+        if (result.success) {
+          saveToken(result.token);
+          saveUser(result.user);
+
+          if (currentRole === 'candidate') {
+            window.location.href = 'user-dashboard.html';
+          } else if (currentRole === 'company') {
+            window.location.href = 'company-dashboard.html';
+          } else if (currentRole === 'admin') {
+            window.location.href = 'admin-dashboard.html';
+          }
+        } else {
+          alert('❌ ' + result.message);
+          btn.textContent = 'Login';
+          btn.disabled = false;
+        }
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Applicants – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-md min-h-screen fixed top-0 left-0 z-40 flex flex-col">
+      <div class="px-6 py-5 border-b">
+        <h1 class="text-xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+      </div>
+      <div class="px-6 py-5 border-b flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg">A</div>
+        <div>
+          <p class="font-semibold text-sm text-gray-800">Acme Corp</p>
+          <p class="text-xs text-gray-400">Hiring Partner</p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        <a href="company-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏠 <span>Dashboard</span></a>
+        <a href="post-job.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">➕ <span>Post a Job</span></a>
+        <a href="manage-jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📋 <span>Manage Jobs</span></a>
+        <a href="applicants.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-medium text-sm">👥 <span>Applicants</span></a>
+        <a href="company-profile.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏢 <span>Company Profile</span></a>
+      </nav>
+      <div class="px-4 py-4 border-t">
+        <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 font-medium text-sm">🚪 <span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 flex-1 p-8">
+
+      <!-- Header -->
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Applicants 👥</h2>
+        <p class="text-gray-500 text-sm mt-1">Review and manage candidates who applied to your jobs.</p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-gray-800">124</p>
+          <p class="text-xs text-gray-400 mt-1">Total Applicants</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-yellow-500">86</p>
+          <p class="text-xs text-gray-400 mt-1">Under Review</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-green-500">14</p>
+          <p class="text-xs text-gray-400 mt-1">Shortlisted</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+          <p class="text-2xl font-bold text-red-500">24</p>
+          <p class="text-xs text-gray-400 mt-1">Rejected</p>
+        </div>
+      </div>
+
+      <!-- Search & Filter -->
+      <div class="bg-white rounded-xl shadow-sm p-4 mb-6 flex gap-3">
+        <input type="text" placeholder="🔍  Search applicants..."
+          class="flex-1 border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500"/>
+        <select class="border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500 text-gray-600">
+          <option>All Jobs</option>
+          <option>Frontend Developer</option>
+          <option>UI/UX Designer</option>
+          <option>Data Scientist</option>
+        </select>
+        <select class="border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-blue-500 text-gray-600">
+          <option>All Status</option>
+          <option>Under Review</option>
+          <option>Shortlisted</option>
+          <option>Rejected</option>
+        </select>
+      </div>
+
+      <!-- Applicants Table -->
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 border-b">
+            <tr>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Candidate</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Applied For</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Applied On</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Status</th>
+              <th class="text-left px-6 py-4 font-semibold text-gray-600">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">J</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">John Smith</p>
+                    <p class="text-xs text-gray-400">john@email.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Frontend Developer</td>
+              <td class="px-6 py-4 text-gray-400">Apr 1, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Under Review</span>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex gap-2">
+                  <button class="text-xs px-3 py-1.5 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-200">Shortlist</button>
+                  <button class="text-xs px-3 py-1.5 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200">Reject</button>
+                  <button class="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg font-medium hover:bg-blue-200">View</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 font-bold">S</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Sara Lee</p>
+                    <p class="text-xs text-gray-400">sara@email.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">UI/UX Designer</td>
+              <td class="px-6 py-4 text-gray-400">Mar 30, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Shortlisted</span>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex gap-2">
+                  <button class="text-xs px-3 py-1.5 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-200">Shortlist</button>
+                  <button class="text-xs px-3 py-1.5 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200">Reject</button>
+                  <button class="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg font-medium hover:bg-blue-200">View</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold">M</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Mike Johnson</p>
+                    <p class="text-xs text-gray-400">mike@email.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Data Scientist</td>
+              <td class="px-6 py-4 text-gray-400">Mar 28, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-medium">Rejected</span>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex gap-2">
+                  <button class="text-xs px-3 py-1.5 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-200">Shortlist</button>
+                  <button class="text-xs px-3 py-1.5 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200">Reject</button>
+                  <button class="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg font-medium hover:bg-blue-200">View</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">A</div>
+                  <div>
+                    <p class="font-semibold text-gray-800">Alice Brown</p>
+                    <p class="text-xs text-gray-400">alice@email.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-gray-600">Frontend Developer</td>
+              <td class="px-6 py-4 text-gray-400">Mar 25, 2024</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">Under Review</span>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex gap-2">
+                  <button class="text-xs px-3 py-1.5 bg-green-100 text-green-700 rounded-lg font-medium hover:bg-green-200">Shortlist</button>
+                  <button class="text-xs px-3 py-1.5 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200">Reject</button>
+                  <button class="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg font-medium hover:bg-blue-200">View</button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </body>
+</html>

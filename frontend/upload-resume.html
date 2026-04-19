@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Resume – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-md min-h-screen fixed top-0 left-0 z-40 flex flex-col">
+      <div class="px-6 py-5 border-b">
+        <h1 class="text-xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+      </div>
+      <div class="px-6 py-5 border-b flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">J</div>
+        <div>
+          <p class="font-semibold text-sm text-gray-800">John Doe</p>
+          <p class="text-xs text-gray-400">Candidate</p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        <a href="user-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏠 <span>Dashboard</span></a>
+        <a href="jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">💼 <span>Browse Jobs</span></a>
+        <a href="applied-jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📋 <span>Applied Jobs</span></a>
+        <a href="user-profile.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">👤 <span>My Profile</span></a>
+        <a href="upload-resume.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-medium text-sm">📄 <span>My Resume</span></a>
+      </nav>
+      <div class="px-4 py-4 border-t">
+        <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 font-medium text-sm">🚪 <span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 flex-1 p-8">
+
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">My Resume 📄</h2>
+        <p class="text-gray-500 text-sm mt-1">Upload your resume so companies can find you.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Upload Section -->
+        <div class="md:col-span-2 space-y-6">
+
+          <!-- Upload Box -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-5">Upload Resume</h3>
+
+            <!-- Drag & Drop Area -->
+            <div id="dropZone"
+              class="border-2 border-dashed border-gray-300 rounded-xl p-10 text-center hover:border-blue-400 transition cursor-pointer"
+              onclick="document.getElementById('resumeFile').click()"
+              ondragover="event.preventDefault(); this.classList.add('border-blue-400','bg-blue-50')"
+              ondragleave="this.classList.remove('border-blue-400','bg-blue-50')"
+              ondrop="handleDrop(event)">
+              <div class="text-5xl mb-4">📄</div>
+              <p class="font-semibold text-gray-700">Drag & drop your resume here</p>
+              <p class="text-sm text-gray-400 mt-1">or click to browse files</p>
+              <p class="text-xs text-gray-300 mt-3">Supported formats: PDF, DOC, DOCX (Max 5MB)</p>
+              <input type="file" id="resumeFile" class="hidden" accept=".pdf,.doc,.docx" onchange="handleFileSelect(event)"/>
+            </div>
+
+            <!-- File Preview (hidden by default) -->
+            <div id="filePreview" class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-4">
+              <div class="text-3xl">📄</div>
+              <div class="flex-1">
+                <p id="fileName" class="font-semibold text-gray-800 text-sm"></p>
+                <p id="fileSize" class="text-xs text-gray-400 mt-0.5"></p>
+              </div>
+              <button onclick="removeFile()"
+                class="text-red-500 hover:text-red-700 text-sm font-medium">Remove</button>
+            </div>
+
+            <button onclick="uploadResume()"
+              class="mt-5 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm">
+              Upload Resume
+            </button>
+          </div>
+
+          <!-- Current Resume -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-5">Current Resume</h3>
+            <div class="flex items-center gap-4 p-4 border rounded-xl">
+              <div class="text-3xl">📄</div>
+              <div class="flex-1">
+                <p class="font-semibold text-gray-800 text-sm">John_Doe_Resume.pdf</p>
+                <p class="text-xs text-gray-400 mt-0.5">Uploaded 3 days ago • 1.2 MB</p>
+              </div>
+              <div class="flex gap-2">
+                <button class="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg font-medium hover:bg-blue-200">
+                  View
+                </button>
+                <button class="text-xs px-3 py-1.5 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tips Section -->
+        <div class="space-y-6">
+
+          <!-- Tips Card -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-4">💡 Resume Tips</h3>
+            <div class="space-y-3 text-sm text-gray-600">
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>Keep your resume to 1–2 pages maximum</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>Use PDF format for best compatibility</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>Include your latest work experience first</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>List relevant skills that match job requirements</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>Add your GitHub or LinkedIn profile link</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-green-500 mt-0.5">✅</span>
+                <p>Proofread for spelling and grammar errors</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resume Score -->
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-bold text-gray-800 mb-4">Resume Score</h3>
+            <div class="flex items-center justify-center">
+              <div class="relative w-28 h-28">
+                <svg class="w-28 h-28 transform -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="#f3f4f6" stroke-width="10" fill="none"/>
+                  <circle cx="50" cy="50" r="40" stroke="#3b82f6" stroke-width="10" fill="none"
+                    stroke-dasharray="251" stroke-dashoffset="75" stroke-linecap="round"/>
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-800">70%</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-3">Good score! Add more skills to improve.</p>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) showFile(file);
+      }
+
+      function handleDrop(event) {
+        event.preventDefault();
+        document.getElementById('dropZone').classList.remove('border-blue-400', 'bg-blue-50');
+        const file = event.dataTransfer.files[0];
+        if (file) showFile(file);
+      }
+
+      function showFile(file) {
+        document.getElementById('fileName').textContent = file.name;
+        document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+        document.getElementById('filePreview').classList.remove('hidden');
+      }
+
+      function removeFile() {
+        document.getElementById('resumeFile').value = '';
+        document.getElementById('filePreview').classList.add('hidden');
+      }
+
+      function uploadResume() {
+        const file = document.getElementById('resumeFile').files[0];
+        if (!file) {
+          alert('⚠️ Please select a file first!');
+          return;
+        }
+        alert('✅ Resume uploaded successfully!');
+      }
+    </script>
+
+  </body>
+</html>

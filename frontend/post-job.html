@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Post a Job – Advorix Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white shadow-md min-h-screen fixed top-0 left-0 z-40 flex flex-col">
+      <div class="px-6 py-5 border-b">
+        <h1 class="text-xl font-bold text-blue-600">Advorix<span class="text-gray-800">Jobs</span></h1>
+      </div>
+      <div class="px-6 py-5 border-b flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-lg">A</div>
+        <div>
+          <p class="font-semibold text-sm text-gray-800">Acme Corp</p>
+          <p class="text-xs text-gray-400">Hiring Partner</p>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 py-4 space-y-1">
+        <a href="company-dashboard.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏠 <span>Dashboard</span></a>
+        <a href="post-job.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-50 text-blue-600 font-medium text-sm">➕ <span>Post a Job</span></a>
+        <a href="manage-jobs.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">📋 <span>Manage Jobs</span></a>
+        <a href="applicants.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">👥 <span>Applicants</span></a>
+        <a href="company-profile.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-50 font-medium text-sm">🏢 <span>Company Profile</span></a>
+      </nav>
+      <div class="px-4 py-4 border-t">
+        <a href="login.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 font-medium text-sm">🚪 <span>Logout</span></a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 flex-1 p-8">
+
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Post a New Job ➕</h2>
+        <p class="text-gray-500 text-sm mt-1">Fill in the details below to post a job listing.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm p-8 max-w-3xl">
+
+        <div class="space-y-5">
+
+          <!-- Job Title -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Job Title <span class="text-red-500">*</span></label>
+            <input type="text" placeholder="e.g. Senior Frontend Developer"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+          </div>
+
+          <!-- Category & Type -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-medium text-gray-700 block mb-1">Category <span class="text-red-500">*</span></label>
+              <select class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 text-gray-600">
+                <option value="">Select category...</option>
+                <option>Technology</option>
+                <option>Design</option>
+                <option>Finance</option>
+                <option>Marketing</option>
+                <option>Healthcare</option>
+                <option>Engineering</option>
+                <option>Education</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-sm font-medium text-gray-700 block mb-1">Job Type <span class="text-red-500">*</span></label>
+              <select class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 text-gray-600">
+                <option value="">Select type...</option>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                <option>Contract</option>
+                <option>Internship</option>
+                <option>Remote</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Location & Salary -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-medium text-gray-700 block mb-1">Location <span class="text-red-500">*</span></label>
+              <input type="text" placeholder="e.g. New York / Remote"
+                class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+            </div>
+            <div>
+              <label class="text-sm font-medium text-gray-700 block mb-1">Salary Range</label>
+              <input type="text" placeholder="e.g. $80,000 – $120,000"
+                class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Experience Required</label>
+            <select class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 text-gray-600">
+              <option value="">Select experience level...</option>
+              <option>Entry Level (0–1 years)</option>
+              <option>Junior (1–3 years)</option>
+              <option>Mid Level (3–5 years)</option>
+              <option>Senior (5+ years)</option>
+              <option>Lead / Manager</option>
+            </select>
+          </div>
+
+          <!-- Skills -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Required Skills</label>
+            <input type="text" placeholder="e.g. React, Node.js, MongoDB (comma separated)"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+          </div>
+
+          <!-- Job Description -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Job Description <span class="text-red-500">*</span></label>
+            <textarea rows="5" placeholder="Describe the role, responsibilities, and what you're looking for..."
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 resize-none"></textarea>
+          </div>
+
+          <!-- Requirements -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Requirements</label>
+            <textarea rows="4" placeholder="List the requirements, qualifications and must-haves..."
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500 resize-none"></textarea>
+          </div>
+
+          <!-- Deadline -->
+          <div>
+            <label class="text-sm font-medium text-gray-700 block mb-1">Application Deadline</label>
+            <input type="date"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-blue-500"/>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex gap-4 pt-2">
+            <button onclick="submitJob()"
+              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm">
+              Submit for Approval
+            </button>
+            <button
+              class="border border-gray-200 text-gray-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition text-sm">
+              Save as Draft
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <script src="js/api.js"></script>
+<script>
+  requireLogin();
+
+  async function submitJob() {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    const title = inputs[0].value;
+    const category = inputs[1].value;
+    const jobType = inputs[2].value;
+    const location = inputs[3].value;
+    const salary = inputs[4].value;
+    const experience = inputs[5].value;
+    const skills = inputs[6].value.split(',').map(s => s.trim());
+    const description = document.querySelectorAll('textarea')[0].value;
+    const requirements = document.querySelectorAll('textarea')[1].value;
+
+    if (!title || !category || !jobType || !location || !description) {
+      alert('⚠️ Please fill in all required fields');
+      return;
+    }
+
+    const result = await postJob({
+      title, category, jobType, location,
+      salary, experience, skills,
+      description, requirements
+    });
+
+    if (result.success) {
+      alert('✅ Job submitted for admin approval!');
+      window.location.href = 'company-dashboard.html';
+    } else {
+      alert('❌ ' + result.message);
+    }
+  }
+</script>
+
+  </body>
+</html>
